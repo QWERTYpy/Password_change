@@ -9,7 +9,6 @@ import time
 def beward(user_name, old_password, new_password, ip_camera, ver):
     """ Данная функция эмулирует действия пользователя по смене пароля в Web интерфейсе для камер Beward
 
-
     :param user_name:
     :param old_password:
     :param new_password:
@@ -17,6 +16,8 @@ def beward(user_name, old_password, new_password, ip_camera, ver):
     :param ver:
     :return:
     """
+
+    x_offset = y_offset = 0
     # Initialize Chrome WebDriver
     # EXE_PATH = r'chromedriver.exe'
     driver = webdriver.Chrome()
@@ -92,6 +93,7 @@ user_name = ''
 old_password = ''
 new_password = ''
 ip_camera = ''
+ver = ''
 for line in file:
     if line[0] == '#':
         continue
