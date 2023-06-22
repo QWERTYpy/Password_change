@@ -24,7 +24,7 @@ def beward(user_name, old_password, new_password, ip_camera, ver):
     driver.set_window_size(1600, 500)
     # Открываем адрес
     driver.get(f'http://{user_name}:{old_password}@{ip_camera}/')
-    time.sleep(2)
+    time.sleep(3)
     if ver == 'old':
         x_offset = 700
         y_offset = 70
@@ -34,7 +34,12 @@ def beward(user_name, old_password, new_password, ip_camera, ver):
     elif ver == 'new2':
         x_offset = 1300
         y_offset = 40
-    ActionChains(driver).move_by_offset(x_offset, y_offset).click().perform()
+    try:
+        ActionChains(driver).move_by_offset(x_offset, y_offset).click().perform()
+    except:
+        print("Ошибка выполнения")
+        return
+    # ActionChains(driver).move_by_offset(x_offset, y_offset).context_click().perform()
     time.sleep(1)
     ActionChains(driver).reset_actions()
     # ActionChains(driver).move_by_offset(270, 200).context_click().perform()
